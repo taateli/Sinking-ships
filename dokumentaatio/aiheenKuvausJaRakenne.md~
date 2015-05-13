@@ -2,7 +2,7 @@ Aihe: Laivanupotuspeli jossa pieni twisti. Aluksi pelaaja saa valita muutaman ru
 
 Pelaaja asettelee neljä erikokoista laivaa ruudukolle ja tietokone arpoo omalle ruudukolleen samanlaiset laivat. Vuorotellen pelaaja ja tietokone yrittää osua toisen laivaan. Laiva uppoaa kun sen kaikkiin ruutuihin on osuttu.
 
-Pelaaja voi valita 4 laivaa näistä laivoista:
+Pelaaja voi valita 4 laivaa alla olevista:
 
 -1 kpl kahden ruudun laivoja (tiedustelualus)
 

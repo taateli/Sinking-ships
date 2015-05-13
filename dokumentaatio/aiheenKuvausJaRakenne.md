@@ -1,6 +1,6 @@
 Aihe: Laivanupotuspeli jossa pieni twisti. Aluksi pelaaja saa valita muutaman ruudun johon upottaa miinan ja jos vastustaja laittaa laivansa siihen saa se heti osuman.
 
-Pelaaja asettelee neljä erikokoista laivaa ruudukolle ja tietokone arpoo omalle ruudukolleen samanlaiset laivat. Vuorotellen pelaaja ja tietokone yrittää osua toisen laivaan. Laiva uppoaa kun sen kaikkiin ruutuihin on osuttu.
+Pelaajat asettelevat neljä erikokoista laivaa ruudukolle. Vuorotellen pelaajat yrittävät osua toisen laivaan. Laiva uppoaa kun sen kaikkiin ruutuihin on osuttu.
 
 Pelaaja voi valita 4 laivaa alla olevista:
 
