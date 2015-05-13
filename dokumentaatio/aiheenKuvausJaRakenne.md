@@ -4,13 +4,13 @@ Pelaaja asettelee neljä erikokoista laivaa ruudukolle ja tietokone arpoo omalle
 
 Pelaaja voi valita 4 laivaa näistä laivoista:
 
--1 kpl kahden ruudun laivoja
+-1 kpl kahden ruudun laivoja (tiedustelualus)
 
--2 kpl 3 ruudun laivoja
+-2 kpl 3 ruudun laivoja (sukellusvene)
 
--2 kpl 4 ruudun laivoja
+-2 kpl 4 ruudun laivoja (miinalaiva)
 
--1 kpl 5 ruudun laivoja
+-1 kpl 5 ruudun laivoja (ilmatukialus)
 
 
 Käyttäjät: Pelaaja
