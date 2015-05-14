@@ -12,8 +12,8 @@ public enum Alus {
      */
     TIEDUSTELUALUS(2),
     SUKELLUSVENE(3),
-    MIINALAIVA(4),
-    ILMATUKIALUS(5);
+    MIINALAIVA(4);
+    
     
     private final int koko;
     
