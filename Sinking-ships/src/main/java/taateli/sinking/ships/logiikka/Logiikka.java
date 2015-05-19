@@ -1,6 +1,8 @@
  
 package taateli.sinking.ships.logiikka;
 
+import java.util.Scanner;
+
 /**
  *
  * @author tatuhelander
@@ -8,74 +10,69 @@ package taateli.sinking.ships.logiikka;
 
 
 public class Logiikka {
-
-    private final int[][] lauta;
-
-    public Logiikka() {
-        this.lauta = new int[6][6];
+    
+    private final Lauta pelaaja1Lauta;
+    private final Lauta pelaaja2Lauta;
+    private Pelaaja pelaaja1;
+    private Pelaaja pelaaja2;
+    private Scanner lukija = new Scanner(System.in);
+    
+    public Logiikka(){
+       pelaaja1Lauta = new Lauta();
+       pelaaja2Lauta = new Lauta();
+}
+    
+    public void Peli(){
+        lisaaPelaajat();
+        lisaaLaivaLaudalle(pelaaja1Lauta);
     }
+    
 
-    public void alustaLauta() {
-        for (int rivi = 0; rivi < 6; rivi++) {
-            for (int sarake = 0; sarake < 6; sarake++) {
-                lauta[rivi][sarake] = -1;
-            }
-        }
+    public void naytaPelilaudat() {
+        System.out.println("Pelaaja 1 lauta: ");
+        pelaaja1Lauta.tulostaPeliAlue();
+        System.out.println("Pelaaja 2 lauta: ");
+        pelaaja2Lauta.tulostaPeliAlue();
     }
-
-    public void tulostaPeliAlue() {
-        System.out.println("\t1 \t2 \t3 \t4 \t5 \t6");
-        System.out.println();
-
-        for (int rivi = 0; rivi < 6; rivi++) {
-            System.out.print((rivi + 1) + "");
-            for (int sarake = 0; sarake < 6; sarake++) {
-                if (lauta[rivi][sarake] == -1) {
-                    System.out.print("\t" + "~");
-                } else if (lauta[rivi][sarake] == 0) {
-                    System.out.print("\t" + "*");
-                } else if (lauta[rivi][sarake] == 1) {
-                    System.out.print("\t" + "=");
-                } else if (lauta[rivi][sarake] == 2) {
-                    System.out.print("\t" + "X");
-                }
-
-            }
-            System.out.println();
-        }
-
-    }
-
-    public void asetaLaiva(int koko, boolean horisontaalinen, int rivi, int sarake) {
-
-        if (horisontaalinen == true) {   // suunta horisontaalinen
-            int onkoLaudallaHorisontaalisesti = koko + sarake;
-            if (onkoLaudallaHorisontaalisesti < 6) {
-                for (int i = 0; i < koko; i++) {
-                    lauta[rivi][sarake] = 1;
-                    sarake++;
-                }
-
-            }
-        } else {   // suunta vertikaalinen
-            int onkoLaudallaVertikaalisesti = koko + rivi;
-            if (onkoLaudallaVertikaalisesti < 6) {
-                for (int i = 0; i < koko; i++) {
-                    lauta[rivi][sarake] = 1;
-                    rivi++;
-                }
-
-            }
-
-        }
-    }
-
-    public void osuukoLaivaan(int rivi, int sarake) {
-        if (lauta[rivi][sarake] == 1) {
-            lauta[rivi][sarake] = 2;
+    
+    public void lisaaLaivaLaudalle(Lauta lauta) {
+        System.out.print("Laivan koko (2-4): ");
+        int koko = lukija.nextInt();
+        
+        System.out.print("Vertikaalisesti(1) vai horisontaalisesti(2)? ");
+        boolean horisontaalinen;
+        if (lukija.nextInt() == 2) {
+            horisontaalinen = true;
         } else {
-            lauta[rivi][sarake] = 0;
+            horisontaalinen = false;
         }
+        System.out.print("Rivi: ");
+        int rivi = lukija.nextInt();
+        
+        System.out.print("Sarake");
+        int sarake = lukija.nextInt();
+        
+        lauta.asetaLaiva(koko, horisontaalinen, rivi, sarake);
     }
-
+    
+    public void lisaaPelaajat() {
+        System.out.print("Pelaaja 1 anna nimi: ");
+        String nimi = lukija.nextLine();
+        pelaaja1 = new Pelaaja(nimi, pelaaja1Lauta);
+        
+        System.out.print("Pelaaja 2 anna nimi: ");
+        String nimi2 = lukija.nextLine();
+        pelaaja2 = new Pelaaja(nimi2, pelaaja2Lauta);
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
