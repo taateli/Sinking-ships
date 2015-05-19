@@ -16,5 +16,5 @@ Pelaaja asettavat ruudukolle 4 laivaa:
 Käyttäjät: Pelaaja
 
 Pelaajan toiminnot:
-- Pelaa peliä toista pelaajaa vastaan
+- Pelaa peliä toista pelaajaa vastaan. Ensin hän päättää mihin vastustajan ruutuun pudottaa syvyyspommin. Sen jälkeen pelaaja asettelee laivat omaan ruudukkoonsa, jos laivan alla on syvyyspommi räjähtää se ja tekee laivan ruutuun vahingon. Laivojen asettamisen jälkeen pelaaja vuorotellen vastustajan kanssa pommittavat vastustajan ruutuja. Voittaja on pelaaja jolla ensimmäisenä kaikki vastustajan laivat tuhottu.
 
