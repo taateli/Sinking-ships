@@ -49,10 +49,15 @@ public class Logiikka {
         System.out.print("Rivi: ");
         int rivi = lukija.nextInt();
         
-        System.out.print("Sarake");
+        System.out.print("Sarake: ");
         int sarake = lukija.nextInt();
         
-        lauta.asetaLaiva(koko, horisontaalinen, rivi, sarake);
+        if (horisontaalinen == true) {
+            lauta.asetaLaivaHorisontaalisesti(koko, rivi, sarake);
+        } else {
+            lauta.asetaLaivaVertikaalisesti(koko, rivi, sarake);
+        }
+        
     }
     
     public void lisaaPelaajat() {
