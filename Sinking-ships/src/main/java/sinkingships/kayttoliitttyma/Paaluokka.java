@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package taateli.sinking.ships.logiikka;
+package sinkingships.kayttoliitttyma;
 
 /**
  *
@@ -12,9 +12,8 @@ package taateli.sinking.ships.logiikka;
 public class Paaluokka {
 
     public static void main(String[] args) {
-        Logiikka logic = new Logiikka();
-        logic.Peli();
-        logic.naytaPelilaudat();
-
+        Tekstikayttoliittyma kayttis = new Tekstikayttoliittyma();
+        kayttis.peli();
     }
+
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package taateli.sinking.ships.logiikka;
+package sinkingships.logiikka;
 
 /**
  *
@@ -21,6 +21,10 @@ public class Lauta {
                 lauta[rivi][sarake] = -1;
             }
         }
+    }
+    
+    public int[][] getLauta() {
+        return lauta;
     }
 
     public int getArvo(int rivi, int sarake) {
@@ -51,6 +55,10 @@ public class Lauta {
     }
 
     public boolean asetaLaivaHorisontaalisesti(int koko, int rivi, int sarake) {
+        int onkoLaudallaHorisontaalisesti = koko + sarake;
+        if (onkoLaudallaHorisontaalisesti >= 6) {
+            return false;
+        }
         boolean paikkaOK = true;
         int testausSarake = sarake;
         for (int i = 0; i < koko; i++) {
@@ -64,14 +72,11 @@ public class Lauta {
 
         if (paikkaOK = true) {
 
-            int onkoLaudallaHorisontaalisesti = koko + sarake;
-            if (onkoLaudallaHorisontaalisesti < 6) {
-                for (int i = 0; i < koko; i++) {
-                    lauta[rivi][sarake] = 1;
-                    sarake++;
-                }
-
+            for (int i = 0; i < koko; i++) {
+                lauta[rivi][sarake] = 1;
+                sarake++;
             }
+
             return true;
         }
         return false;
@@ -80,6 +85,11 @@ public class Lauta {
     public boolean asetaLaivaVertikaalisesti(int koko, int rivi, int sarake) {
 
         boolean paikkaOK = true;
+        int onkoLaudallaVertikaalisesti = koko + rivi;
+        if (onkoLaudallaVertikaalisesti >= 6) {
+            return false;
+        }
+
         int testausRivi = rivi;
         for (int i = 0; i < koko; i++) {
             if (lauta[testausRivi][sarake] == 1) {
@@ -92,14 +102,11 @@ public class Lauta {
 
         if (paikkaOK == true) {
 
-            int onkoLaudallaVertikaalisesti = koko + rivi;
-            if (onkoLaudallaVertikaalisesti < 6) {
-                for (int i = 0; i < koko; i++) {
-                    lauta[rivi][sarake] = 1;
-                    rivi++;
-                }
-
+            for (int i = 0; i < koko; i++) {
+                lauta[rivi][sarake] = 1;
+                rivi++;
             }
+
             return true;
 
         } else {
@@ -116,7 +123,5 @@ public class Lauta {
             return false;
         }
     }
-
-
 
 }

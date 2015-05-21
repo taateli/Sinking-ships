@@ -1,3 +1,5 @@
+package sinkingships.logiikka;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,8 +9,8 @@
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import taateli.sinking.ships.logiikka.Lauta;
-import taateli.sinking.ships.logiikka.Pelaaja;
+import sinkingships.logiikka.Lauta;
+import sinkingships.logiikka.Pelaaja;
 
 /**
  *
@@ -16,10 +18,11 @@ import taateli.sinking.ships.logiikka.Pelaaja;
  */
 public class PelaajaTest {
     private Pelaaja pelaaja;
+    Lauta lauta = new Lauta();
 
     @Before
     public void setUp() {
-        pelaaja = new Pelaaja("Pertti", new Lauta());
+        pelaaja = new Pelaaja("Pertti", lauta);
     }
     
     @Test
@@ -37,6 +40,11 @@ public class PelaajaTest {
         pelaaja.lisaaPiste();
         pelaaja.lisaaPiste();
         assertEquals(pelaaja.getPisteet(), 2);
+    }
+    
+    @Test
+    public void laudanPalautusToiii() {
+        assertEquals(pelaaja.getLauta(), lauta);
     }
     
     // TODO add test methods here.
