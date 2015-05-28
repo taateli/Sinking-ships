@@ -34,8 +34,8 @@ public class Pelaaja {
         return pisteet;
     }
 
-    public Lauta getLauta() {
-        return lauta;
+    public int[][] getLauta() {
+        return lauta.getLauta();
     }
     
     public ArrayList<Laiva> annaLaivat() {

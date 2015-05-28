@@ -48,24 +48,34 @@ public class LautaTest {
 
     @Test
     public void laivaAlkaaOikeastaPaikasta() {
-        lauta.asetaLaivaHorisontaalisesti(2, 1, 1);
+        lauta.asetaLaivaVaaka(2, 1, 1);
         assertEquals(lauta.getArvo(1, 1), 1);
     }
 
     @Test
     public void laivaLoppuuOikeaanPaikkaan() {
-        lauta.asetaLaivaVertikaalisesti(3, 1, 4);
+        lauta.asetaLaivaPysty(3, 1, 4);
         assertEquals(lauta.getArvo(1, 4), 1);
+    }
+    
+    @Test
+    public void laivaEiLaudalla() {
+        assertEquals(lauta.asetaLaivaPysty(4, 4, 1), false);
+    }
+    
+    @Test
+    public void laivaEiLaudalla2() {
+        assertEquals(lauta.asetaLaivaVaaka(4, 1, 5), false);
     }
 
     public void osuukoLaivaanToimiiKunOsuu() {
-        lauta.asetaLaivaHorisontaalisesti(3, 2, 1);
+        lauta.asetaLaivaPysty(3, 2, 1);
         lauta.osuukoLaivaan(2, 3);
         assertEquals(lauta.getArvo(2, 3), 2);
     }
 
     public void osuukoLaivaanToimiiKunEiOsu() {
-        lauta.asetaLaivaHorisontaalisesti(3, 2, 1);
+        lauta.asetaLaivaVaaka(3, 2, 1);
         lauta.osuukoLaivaan(4, 1);
         assertEquals(lauta.getArvo(4, 1), 0);
     }

@@ -6,6 +6,7 @@ package sinkingships.logiikka;
  * and open the template in the editor.
  */
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -19,10 +20,12 @@ import sinkingships.logiikka.Pelaaja;
 public class PelaajaTest {
     private Pelaaja pelaaja;
     Lauta lauta = new Lauta();
+    int[][] testi;
 
     @Before
     public void setUp() {
         pelaaja = new Pelaaja("Pertti", lauta);
+        testi = pelaaja.getLauta();
     }
     
     @Test
@@ -44,7 +47,7 @@ public class PelaajaTest {
     
     @Test
     public void laudanPalautusToiii() {
-        assertEquals(pelaaja.getLauta(), lauta);
+        assertEquals(pelaaja.getLauta(), testi);
     }
     
     // TODO add test methods here.

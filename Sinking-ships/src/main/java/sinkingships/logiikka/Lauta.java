@@ -22,7 +22,7 @@ public class Lauta {
             }
         }
     }
-    
+
     public int[][] getLauta() {
         return lauta;
     }
@@ -31,40 +31,17 @@ public class Lauta {
         return lauta[rivi][sarake];
     }
 
-    public void tulostaPeliAlue() {
-        System.out.println("\t1 \t2 \t3 \t4 \t5 \t6");
-        System.out.println();
 
-        for (int rivi = 0; rivi < 6; rivi++) {
-            System.out.print((rivi + 1) + "");
-            for (int sarake = 0; sarake < 6; sarake++) {
-                if (lauta[rivi][sarake] == -1) {
-                    System.out.print("\t" + "~");
-                } else if (lauta[rivi][sarake] == 0) {
-                    System.out.print("\t" + "*");
-                } else if (lauta[rivi][sarake] == 1) {
-                    System.out.print("\t" + "=");
-                } else if (lauta[rivi][sarake] == 2) {
-                    System.out.print("\t" + "X");
-                }
-
-            }
-            System.out.println();
-        }
-
-    }
-
-    public boolean asetaLaivaHorisontaalisesti(int koko, int rivi, int sarake) {
+    public boolean asetaLaivaVaaka(int koko, int rivi, int sarake) {
         int onkoLaudallaHorisontaalisesti = koko + sarake;
-        if (onkoLaudallaHorisontaalisesti >= 6) {
+        if (onkoLaudallaHorisontaalisesti > 6) {
             return false;
         }
         boolean paikkaOK = true;
         int testausSarake = sarake;
         for (int i = 0; i < koko; i++) {
             if (lauta[rivi][testausSarake] == 1) {
-                paikkaOK = false;
-                testausSarake++;
+                return false;
             } else {
                 testausSarake++;
             }
@@ -82,19 +59,19 @@ public class Lauta {
         return false;
     }
 
-    public boolean asetaLaivaVertikaalisesti(int koko, int rivi, int sarake) {
+    public boolean asetaLaivaPysty(int koko, int rivi, int sarake) {
 
-        boolean paikkaOK = true;
         int onkoLaudallaVertikaalisesti = koko + rivi;
-        if (onkoLaudallaVertikaalisesti >= 6) {
+        if (onkoLaudallaVertikaalisesti > 6) {
             return false;
         }
+
+        boolean paikkaOK = true;
 
         int testausRivi = rivi;
         for (int i = 0; i < koko; i++) {
             if (lauta[testausRivi][sarake] == 1) {
-                paikkaOK = false;
-                testausRivi++;
+                return false;
             } else {
                 testausRivi++;
             }
