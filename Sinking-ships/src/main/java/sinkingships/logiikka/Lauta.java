@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * 
+ * 
+ * 
  */
 package sinkingships.logiikka;
 
@@ -12,6 +12,7 @@ package sinkingships.logiikka;
 public class Lauta {
 
     private final int[][] lauta;
+    int laivoja;
 
     public Lauta() {
         this.lauta = new int[6][6];
@@ -30,75 +31,99 @@ public class Lauta {
     public int getArvo(int rivi, int sarake) {
         return lauta[rivi][sarake];
     }
-
-
-    public boolean asetaLaivaVaaka(int koko, int rivi, int sarake) {
-        int onkoLaudallaHorisontaalisesti = koko + sarake;
-        if (onkoLaudallaHorisontaalisesti > 6) {
+    
+    public boolean lisaaSyvyysPommi(int rivi, int sarake) {
+        if (onkoPisteLaudalla(rivi, sarake) == true){
+        lauta[rivi][sarake] = 3;
+        return true;
+        } else {
             return false;
         }
-        boolean paikkaOK = true;
+    }
+
+    public int asetaLaivaVaaka(int koko, int rivi, int sarake) {
+        int osuukoMiinat = 0;
+        int onkoLaudallaVaaka = koko + sarake;
+        if (onkoPisteLaudalla(rivi, onkoLaudallaVaaka) == false || onkoPisteLaudalla(rivi, sarake)== false) {
+            osuukoMiinat = -1;
+            return osuukoMiinat;
+        }
         int testausSarake = sarake;
         for (int i = 0; i < koko; i++) {
             if (lauta[rivi][testausSarake] == 1) {
-                return false;
+                osuukoMiinat = -1;
+                return osuukoMiinat;
             } else {
                 testausSarake++;
             }
         }
-
-        if (paikkaOK = true) {
-
-            for (int i = 0; i < koko; i++) {
+         for (int i = 0; i < koko; i++) {
+             if (lauta[rivi][sarake] ==3) {
+                 lauta[rivi][sarake] = 2;
+                 osuukoMiinat++;
+                 sarake++;
+             } else {
                 lauta[rivi][sarake] = 1;
                 sarake++;
             }
-
-            return true;
-        }
-        return false;
+    }
+            return osuukoMiinat;
+        
     }
 
-    public boolean asetaLaivaPysty(int koko, int rivi, int sarake) {
-
-        int onkoLaudallaVertikaalisesti = koko + rivi;
-        if (onkoLaudallaVertikaalisesti > 6) {
-            return false;
+    public int asetaLaivaPysty(int koko, int rivi, int sarake) {
+        int osuukoMiinat = 0;
+        int onkoLaudallaPysty = koko + rivi;
+        if (onkoPisteLaudalla(onkoLaudallaPysty, sarake) == false || onkoPisteLaudalla(rivi, sarake)== false) {
+            osuukoMiinat = -1;
+            return osuukoMiinat;
         }
-
-        boolean paikkaOK = true;
-
+        
         int testausRivi = rivi;
         for (int i = 0; i < koko; i++) {
-            if (lauta[testausRivi][sarake] == 1) {
-                return false;
+            if (lauta[testausRivi][sarake]== 1) {
+                osuukoMiinat = -1;
+                return osuukoMiinat;
             } else {
                 testausRivi++;
             }
         }
 
-        if (paikkaOK == true) {
-
             for (int i = 0; i < koko; i++) {
+                if (lauta[rivi][sarake] == 3) {
+                    lauta[rivi][sarake] = 2;
+                    osuukoMiinat++;
+                    rivi++;
+                } else {
                 lauta[rivi][sarake] = 1;
                 rivi++;
             }
+            }
+            return osuukoMiinat;
 
-            return true;
-
-        } else {
-            return false;
-        }
-    }
+        }       
+    
 
     public boolean osuukoLaivaan(int rivi, int sarake) {
-        if (lauta[rivi][sarake] == 1) {
-            lauta[rivi][sarake] = 2;
-            return true;
-        } else {
-            lauta[rivi][sarake] = 0;
-            return false;
+        
+        if (onkoPisteLaudalla(rivi, sarake) == true) {
+            if (lauta[rivi][sarake] == 1) {
+                lauta[rivi][sarake] = 2;
+                return true;
+            } else {
+                lauta[rivi][sarake] = 0;
+                return false;
+            }
         }
+        return false;
+    }
+
+    public boolean onkoPisteLaudalla(int rivi, int sarake) {
+        return rivi < 6 && sarake < 6;
+    }
+    
+    public boolean onkoPisteessaLaivaa(int rivi, int sarake) {
+        return lauta[rivi][sarake] == 1;
     }
 
 }

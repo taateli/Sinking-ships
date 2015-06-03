@@ -29,20 +29,25 @@ public class Tekstikayttoliittyma {
 
     public void peli() {
         lisaaPelaajat();
-        
+        //lisaaPommitPelaaja1();
+        //lisaaPommitPelaaja2();
         System.out.println(pelaaja1 + " aseta laivat!");        
-        lisaaLaivatPelaaja1();
+        
         naytaPeliAluePelaaja1();
         
         System.out.println(pelaaja2 + " aseta laivat!");
-        lisaaLaivatPelaaja2();
+        
         naytaPeliAluePelaaja2();
         
         while (true) {
             naytaPeliAluePelaaja1();
-            pelaaPelaaja1Vuoro();
+            if (pelaaPelaaja1Vuoro() == false) {
+                break;
+            }
             naytaPeliAluePelaaja2();
-            pelaaPelaaja2Vuoro();            
+            if (pelaaPelaaja2Vuoro() == false) {
+                break;
+            }            
         }
     }
 
@@ -53,6 +58,35 @@ public class Tekstikayttoliittyma {
         this.pelaaja2 = lukija.nextLine();
         logic.lisaaPelaajat(pelaaja1, pelaaja2);
     }
+    
+    //public void lisaaPommitPelaaja1() {
+    //    System.out.println(logic.getPelaaja1().getNimi() + " lisää syvyyspommit(2) vastustajan laudalle!");
+    //    for (int i = 0; i < 2;) {
+    //        System.out.print("Rivi: ");
+    //        int rivi = lukija.nextInt();
+    //        System.out.print("Sarake: ");
+    //        int sarake = lukija.nextInt();
+    //        
+    //        if (logic.pelaaja1LisaaMiina(rivi, sarake) == true) {
+    //            i++;
+    //        }
+    //    }
+//}
+    
+  //      public void lisaaPommitPelaaja2() {
+  //      System.out.println(logic.getPelaaja2().getNimi() + " lisää syvyyspommit(2) vastustajan laudalle!");
+  //      for (int i = 0; i < 2;) {
+  //          System.out.print("Rivi: ");
+  //          int rivi = lukija.nextInt();
+  //          System.out.print("Sarake: ");
+  //          int sarake = lukija.nextInt();
+  //          
+  //          if (logic.pelaaja2LisaaMiina(rivi, sarake) == true) {
+  ////              i++;
+  //          }
+  //      }
+//}
+    
 
     public void lisaaLaivatPelaaja1() {
         ArrayList<Laiva> laivat = logic.getLaivat();
@@ -171,9 +205,9 @@ public class Tekstikayttoliittyma {
         System.out.println(pelaaja.getNimi() + " ammu vastustajan laudalle!");
         System.out.print("Rivi: ");
         int rivi = lukija.nextInt();
-        System.out.println("Sarake: ");
+        System.out.print("Sarake: ");
         int sarake = lukija.nextInt();
-        if (logic.ammuPelaaja1(pelaaja, rivi, sarake) == true){
+        if (logic.ammuPelaaja1(rivi, sarake) == true){
             return true;
         } else {
             System.out.println("Onnea " + pelaaja.getNimi() + " voitit pelin!");
@@ -184,12 +218,12 @@ public class Tekstikayttoliittyma {
     
         public boolean pelaaPelaaja2Vuoro() {
         Pelaaja pelaaja = logic.getPelaaja2();
-        System.out.println("Ammu vastustajan laudalle!");
+        System.out.println(pelaaja.getNimi() + " ammu vastustajan laudalle!");
         System.out.print("Rivi: ");
         int rivi = lukija.nextInt();
-        System.out.println("Sarake: ");
+        System.out.print("Sarake: ");
         int sarake = lukija.nextInt();
-        if (logic.ammuPelaaja2(pelaaja, rivi, sarake) == true){
+        if (logic.ammuPelaaja2(rivi, sarake) == true){
             return true;
         } else {
             System.out.println("Onnea " + pelaaja.getNimi() + " voitit pelin!");

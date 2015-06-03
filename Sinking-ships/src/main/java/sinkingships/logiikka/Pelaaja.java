@@ -14,33 +14,19 @@ import java.util.ArrayList;
 public class Pelaaja {
     private final String nimi;
     private final Lauta lauta;
-    private int pisteet = 0;
-    private final ArrayList<Laiva> laivat = new ArrayList<>();
+
     
     public Pelaaja(String nimi, Lauta lauta) {
         this.nimi = nimi;
         this.lauta = lauta;
-        laivat.add(new Laiva(2));
-        laivat.add(new Laiva(3));
-        laivat.add(new Laiva(3));
-        laivat.add(new Laiva(4));
     }
     
-    public void lisaaPiste(){
-        this.pisteet++;
-    }
-    
-    public int getPisteet() {
-        return pisteet;
-    }
-
+   
     public int[][] getLauta() {
         return lauta.getLauta();
     }
     
-    public ArrayList<Laiva> annaLaivat() {
-        return laivat;
-    }
+  
     
     public String getNimi() {
         return nimi;

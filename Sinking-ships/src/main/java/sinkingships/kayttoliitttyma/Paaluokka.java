@@ -5,6 +5,8 @@
  */
 package sinkingships.kayttoliitttyma;
 
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author tatuhelander
@@ -12,8 +14,8 @@ package sinkingships.kayttoliitttyma;
 public class Paaluokka {
 
     public static void main(String[] args) {
-        Tekstikayttoliittyma kayttis = new Tekstikayttoliittyma();
-        kayttis.peli();
+        Tekstikayttoliittyma testi = new Tekstikayttoliittyma();
+        testi.peli();
     }
 
 }

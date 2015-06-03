@@ -39,18 +39,39 @@ public class LogiikkaTest {
         assertEquals(logic.getLaivat().size(), 4);
     }
     
+    @Test
     public void konstruktoriToimii2() {
         ArrayList<Laiva> laivat = logic.getLaivat();
         int koko = 0;
         for (Laiva l : laivat) {
             koko = koko + l.getKoko();
         }
-        assertEquals(koko, 11);
+        assertEquals(koko, 12);
     }
+    
+    //@Test
+   // public void miinanLisaysPelaaja1Toimii1() {
+   //     assertEquals(logic.pelaaja1LisaaMiina(1, 1), true);
+   // }
+    
+    //@Test
+   // public void miinanLisaysPelaaja1Toimii2() {
+   //     assertEquals(logic.pelaaja1LisaaMiina(7, 2), false);
+   // }
+    
+    //@Test
+    //public void miinanLisaysPelaaja2Toimii1() {
+    //    assertEquals(logic.pelaaja2LisaaMiina(1, 1), true);
+    //}
+    
+    //@Test
+    //public void miinanLisaysPelaaja2Toimii2() {
+    //    assertEquals(logic.pelaaja2LisaaMiina(7, 2), false);
+    //}
     
     @Test
     public void lisaaLaivaPelaaja1Toimii() {
-        assertEquals(logic.lisaaLaivaLaudallePelaaja1(true, 2, 1, 1), true);
+        assertEquals(logic.lisaaLaivaLaudallePelaaja1(true, 2, 1, 1), false);
     }
     
     @Test
@@ -69,6 +90,40 @@ public class LogiikkaTest {
         logic.lisaaLaivaLaudallePelaaja2(true, 2, 1, 1);
         assertEquals(logic.lisaaLaivaLaudallePelaaja2(true, 2, 1, 1), false);
     }
+    
+    @Test
+    public void ammuPelaaja1Toimii() {
+        logic.lisaaLaivaLaudallePelaaja2(true, 3, 1, 1);
+        assertEquals(logic.ammuPelaaja1(1, 1), true);
+    }
+    
+    @Test
+    public void ammuPelaaja2Toimii() {
+        logic.lisaaLaivaLaudallePelaaja1(true, 4, 2, 2);
+        assertEquals(logic.ammuPelaaja2(1, 1), true);
+    }
+    
+  //  public void miinatToimii1() {
+   //     logic.pelaaja1LisaaMiina(1, 1);
+     //   logic.lisaaLaivaLaudallePelaaja2(true, 3, 1, 1);
+       // assertEquals(logic.getPelaaja1Pisteet(), 1);
+    //}
+    
+   // @Test
+   // public void miinatToimii2() {
+   //     logic.pelaaja2LisaaMiina(1, 1);
+   //     logic.pelaaja2LisaaMiina(1, 2);
+   //     logic.lisaaLaivaLaudallePelaaja1(true, 3, 1, 1);
+   //     assertEquals(logic.getPelaaja2Pisteet(), 2);
+   // }
+    
+   // @Test
+   // public void miinatToimii3() {
+   //     logic.pelaaja1LisaaMiina(2, 4);
+   //     logic.pelaaja1LisaaMiina(3, 4);
+   //     logic.lisaaLaivaLaudallePelaaja2(false, 3, 2, 4);
+   //     assertEquals(logic.getPelaaja1Pisteet(), 2);
+   // }
     
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

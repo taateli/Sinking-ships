@@ -33,17 +33,6 @@ public class PelaajaTest {
         assertEquals(pelaaja.getNimi(), "Pertti");
     }
     
-    @Test
-    public void pisteetAluksiNolla() {
-        assertEquals(pelaaja.getPisteet(), 0);
-    }
-    
-    @Test
-    public void pisteidenLisaysToimii() {
-        pelaaja.lisaaPiste();
-        pelaaja.lisaaPiste();
-        assertEquals(pelaaja.getPisteet(), 2);
-    }
     
     @Test
     public void laudanPalautusToiii() {
