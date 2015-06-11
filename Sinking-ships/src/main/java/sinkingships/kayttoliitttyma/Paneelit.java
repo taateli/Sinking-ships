@@ -16,15 +16,13 @@ import javax.swing.JPanel;
  * @author tatuhelander
  */
 public class Paneelit extends JPanel {
+
     JButton[][] taulukko = new JButton[6][6];
-    
+
     public Paneelit() {
         setLayout(new GridLayout(6, 6));
-       
+
         setBackground(Color.yellow);
     }
-    
-   
-    
-  
+
 }

@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  *
  * @author tatuhelander
  */
-public class NapinKuuntelija implements ActionListener  {
+public class NapinKuuntelija implements ActionListener {
 
     private static Object getSource() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -23,5 +23,5 @@ public class NapinKuuntelija implements ActionListener  {
         Object source = NapinKuuntelija.getSource();
         System.out.println(source);
     }
-    
+
 }

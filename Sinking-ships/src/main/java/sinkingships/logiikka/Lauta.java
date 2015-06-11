@@ -15,10 +15,10 @@ public class Lauta {
     int laivoja;
 
     public Lauta() {
-        this.lauta = new int[6][6];
+        this.lauta = new int[8][8];
 
-        for (int rivi = 0; rivi < 6; rivi++) {
-            for (int sarake = 0; sarake < 6; sarake++) {
+        for (int rivi = 0; rivi < 8; rivi++) {
+            for (int sarake = 0; sarake < 8; sarake++) {
                 lauta[rivi][sarake] = -1;
             }
         }
@@ -31,81 +31,84 @@ public class Lauta {
     public int getArvo(int rivi, int sarake) {
         return lauta[rivi][sarake];
     }
-    
-    public boolean lisaaSyvyysPommi(int rivi, int sarake) {
-        if (onkoPisteLaudalla(rivi, sarake) == true){
-        lauta[rivi][sarake] = 3;
-        return true;
+
+    public boolean asetaLaivaVaaka(int koko, int rivi, int sarake) {
+        int onkoLaudallaVaaka = koko + sarake;
+        if (onkoPisteLaudalla(rivi, onkoLaudallaVaaka) == false || onkoPisteLaudalla(rivi, sarake) == false) {
+            return false;
+        }
+
+        if (onkoTilaVapaaPysty(koko, rivi, sarake) == true) {
+            for (int i = 0; i < koko; i++) {
+                lauta[rivi][sarake] = 1;
+                sarake++;
+            }
+            return true;
+
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean asetaLaivaPysty(int koko, int rivi, int sarake) {
+        int onkoLaudallaPysty = koko + rivi;
+        if (onkoPisteLaudalla(onkoLaudallaPysty, sarake) == false || onkoPisteLaudalla(rivi, sarake) == false) {
+            return false;
+        }
+        if (onkoTilaVapaaPysty(koko, rivi, sarake) == true) {
+            for (int i = 0; i < koko; i++) {
+                if (lauta[rivi][sarake] == 3) {
+                    lauta[rivi][sarake] = 2;
+                    rivi++;
+                } else {
+                    lauta[rivi][sarake] = 1;
+                    rivi++;
+                }
+            }
+            return true;
+
         } else {
             return false;
         }
     }
 
-    public int asetaLaivaVaaka(int koko, int rivi, int sarake) {
-        int osuukoMiinat = 0;
-        int onkoLaudallaVaaka = koko + sarake;
-        if (onkoPisteLaudalla(rivi, onkoLaudallaVaaka) == false || onkoPisteLaudalla(rivi, sarake)== false) {
-            osuukoMiinat = -1;
-            return osuukoMiinat;
-        }
-        int testausSarake = sarake;
-        for (int i = 0; i < koko; i++) {
-            if (lauta[rivi][testausSarake] == 1) {
-                osuukoMiinat = -1;
-                return osuukoMiinat;
-            } else {
-                testausSarake++;
-            }
-        }
-         for (int i = 0; i < koko; i++) {
-             if (lauta[rivi][sarake] ==3) {
-                 lauta[rivi][sarake] = 2;
-                 osuukoMiinat++;
-                 sarake++;
-             } else {
-                lauta[rivi][sarake] = 1;
-                sarake++;
-            }
-    }
-            return osuukoMiinat;
-        
-    }
-
-    public int asetaLaivaPysty(int koko, int rivi, int sarake) {
-        int osuukoMiinat = 0;
+    public boolean onkoTilaVapaaPysty(int koko, int rivi, int sarake) {
         int onkoLaudallaPysty = koko + rivi;
-        if (onkoPisteLaudalla(onkoLaudallaPysty, sarake) == false || onkoPisteLaudalla(rivi, sarake)== false) {
-            osuukoMiinat = -1;
-            return osuukoMiinat;
+        if (onkoPisteLaudalla(onkoLaudallaPysty, sarake) == false || onkoPisteLaudalla(rivi, sarake) == false) {
+            return false;
         }
-        
-        int testausRivi = rivi;
-        for (int i = 0; i < koko; i++) {
-            if (lauta[testausRivi][sarake]== 1) {
-                osuukoMiinat = -1;
-                return osuukoMiinat;
-            } else {
-                testausRivi++;
-            }
-        }
-
             for (int i = 0; i < koko; i++) {
-                if (lauta[rivi][sarake] == 3) {
-                    lauta[rivi][sarake] = 2;
-                    osuukoMiinat++;
-                    rivi++;
+                if (lauta[rivi][sarake] == 1) {
+                    return false;
                 } else {
-                lauta[rivi][sarake] = 1;
-                rivi++;
+                    rivi++;
+                }
             }
-            }
-            return osuukoMiinat;
-
-        }       
+            return true;
+        } 
     
 
+
+    public boolean onkoTilaVapaaVaaka(int koko, int rivi, int sarake) {
+        int onkoLaudallaVaaka = koko + sarake;
+        if (onkoPisteLaudalla(rivi, onkoLaudallaVaaka) == true || onkoPisteLaudalla(rivi, sarake) == true) {
+
+            for (int i = 0; i < koko; i++) {
+                if (lauta[rivi][sarake] == 1) {
+                    return false;
+                } else {
+                    sarake++;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public boolean osuukoLaivaan(int rivi, int sarake) {
-        
+
         if (onkoPisteLaudalla(rivi, sarake) == true) {
             if (lauta[rivi][sarake] == 1) {
                 lauta[rivi][sarake] = 2;
@@ -119,11 +122,12 @@ public class Lauta {
     }
 
     public boolean onkoPisteLaudalla(int rivi, int sarake) {
-        return rivi < 6 && sarake < 6;
+       if (rivi < 8 && sarake < 8) {
+           return true;
+       } else {
+           return false;
+       }
     }
-    
-    public boolean onkoPisteessaLaivaa(int rivi, int sarake) {
-        return lauta[rivi][sarake] == 1;
-    }
+
 
 }

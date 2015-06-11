@@ -14,8 +14,8 @@ import javax.swing.SwingUtilities;
 public class Paaluokka {
 
     public static void main(String[] args) {
-        Tekstikayttoliittyma testi = new Tekstikayttoliittyma();
-        testi.peli();
+        Kayttoliittyma testi = new Kayttoliittyma();
+        testi.run();
     }
 
 }

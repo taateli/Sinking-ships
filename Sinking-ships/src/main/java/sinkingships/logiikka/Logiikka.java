@@ -16,12 +16,16 @@ public class Logiikka {
     private Pelaaja pelaaja1;
     private Pelaaja pelaaja2;
     private final ArrayList<Laiva> laivat = new ArrayList<>();
-
+    private int vuoro;
+    private Random rand = new Random();
+    
     public Logiikka() {
         pelaaja1Lauta = new Lauta();
         pelaaja2Lauta = new Lauta();
         asetaLaivat();
-        arvoLaivatLaudalle();
+        arvoLaivatLaudallePelaaja1();
+        arvoLaivatLaudallePelaaja2();
+        vuoro = 2;
     }
     
     //public Logiika() {
@@ -41,16 +45,29 @@ public class Logiikka {
         laivat.add(new Laiva(3));
         laivat.add(new Laiva(4));
     }
+    
+    public void vaihdaVuoroa() {
+        if (vuoro == 1) {
+            vuoro = 2;
+        } else {
+            vuoro = 1;
+        }
+        
+    }
+    
+    public int getVuoro() {
+        return vuoro;
+    }
 
     /*
     *Palauttaa pelaaja1 laudan
     */
     public int[][] getLauta1() {
-        return pelaaja1.getLauta();
+        return pelaaja1Lauta.getLauta();
     }
 
     public int[][] getLauta2() {
-        return pelaaja2.getLauta();
+        return pelaaja2Lauta.getLauta();
     }
 
     public ArrayList<Laiva> getLaivat() {
@@ -84,65 +101,24 @@ public class Logiikka {
     */
     public boolean lisaaLaivaLaudallePelaaja1(boolean suunta, int koko, int rivi, int sarake) {
 
-        int laivanKoko = koko;
-
-        int aloitusRivi = (rivi - 1);
-
-        int aloitusSarake = (sarake - 1);
-
-        if (suunta == true) {
-            int pisteita = pelaaja1Lauta.asetaLaivaVaaka(laivanKoko, aloitusRivi, aloitusSarake);
-            if (pisteita == (-1)) {
-                return false;
-            } else {
-                for (int i = 0; i < pisteita; i++) {
-                    pelaaja2Pisteet++;
-                }
-                return true;
-            }
+           if (suunta == true) {
+            return pelaaja1Lauta.asetaLaivaVaaka(koko, rivi, sarake);
+            
         } else {
-            int pisteita = pelaaja1Lauta.asetaLaivaPysty(laivanKoko, aloitusRivi, aloitusSarake);
-            if (pisteita == -1) {
-                return false;
-            } else {
-                for (int i = 0; i < pisteita; i++) {
-                    pelaaja2Pisteet++;
-                }
-                return true;
-            }
-        }
+            return pelaaja1Lauta.asetaLaivaPysty(koko, rivi, sarake);
+     
+    }
     }
 
     public boolean lisaaLaivaLaudallePelaaja2(boolean suunta, int koko, int rivi, int sarake) {
 
-        int laivanKoko = koko;
-
-        int aloitusRivi = (rivi - 1);
-
-        int aloitusSarake = (sarake - 1);
-
         if (suunta == true) {
-            int pisteita = pelaaja2Lauta.asetaLaivaVaaka(laivanKoko, aloitusRivi, aloitusSarake);
-            if (pisteita == -1) {
-                return false;
-            } else {
-                for (int i = 0; i < pisteita; i++) {
-                    pelaaja1Pisteet++;
-                }
-                return true;
-            }
+            return pelaaja2Lauta.asetaLaivaVaaka(koko, rivi, sarake);
+            
         } else {
-            int pisteita = pelaaja2Lauta.asetaLaivaPysty(laivanKoko, aloitusRivi, aloitusSarake);
-            if (pisteita == -1) {
-                return false;
-            } else {
-                for (int i = 0; i < pisteita; i++) {
-                    pelaaja1Pisteet++;
-                }
-                return true;
-            }
-        }
-
+            return pelaaja2Lauta.asetaLaivaPysty(koko, rivi, sarake);
+            
+    }
     }
 
     public void lisaaPelaajat(String nimi1, String nimi2) {
@@ -158,47 +134,60 @@ public class Logiikka {
         return pelaaja2;
     }
 
-    public boolean ammuPelaaja1(int rivi, int sarake) {
-        if (pelaaja2Lauta.osuukoLaivaan((rivi - 1), (sarake - 1)) == true) {
+    public int ammuPelaaja1(int rivi, int sarake) {
+        if (pelaaja2Lauta.osuukoLaivaan((rivi), (sarake)) == true) {
             pelaaja1Pisteet++;
-        }
-
-        if (pelaaja1Pisteet == 12) {
-            return false;
+            if (pelaaja1Pisteet == 12) {
+            return 3; // jos osuma laivan ja pelaajalla 12 pistettä palautta 3, eli pelaaja voitaa pelin
+            }
+            return 1; // jos osuma laivaan palauttaa 1
         } else {
-            return true;
+            return 2; // jos ammuttu tyhjään ruutuun palauttaa 2
         }
 
     }
 
-    public boolean ammuPelaaja2(int rivi, int sarake) {
-        if (pelaaja1Lauta.osuukoLaivaan((rivi - 1), (sarake - 1)) == true) {
+    public int ammuPelaaja2(int rivi, int sarake) {
+        if (pelaaja1Lauta.osuukoLaivaan((rivi), (sarake)) == true) {
             pelaaja2Pisteet++;
-        }
-
-        if (pelaaja2Pisteet == 12) {
-            return false;
+            if (pelaaja2Pisteet == 12) {
+            return 3; // jos osuma laivan ja pelaajalla 12 pistettä palautta 3, eli pelaaja voitaa pelin
+            }
+            return 1; // jos osuma laivaan palauttaa 1
         } else {
-            return true;
+            return 2; // jos ammuttu tyhjään ruutuun palauttaa 2
         }
 
     }
     
-    public void arvoLaivatLaudalle() {
-        Random rand = new Random();
+    public void arvoLaivatLaudallePelaaja1() {
         for (int i = 0; i < laivat.size();) {
-            int rivi = rand.nextInt(5) +1;
-            int sarake = rand.nextInt(5) +1;
-            if (lisaaLaivaLaudallePelaaja1(true, laivat.get(i).getKoko(), rivi, sarake) == true){
+            int rivi = rand.nextInt(6) +1;
+            int sarake = rand.nextInt(6) +1;
+            if (lisaaLaivaLaudallePelaaja1(arvoLaivalleSuunta(), laivat.get(i).getKoko(), rivi, sarake) == true){
                 i++;
-            } 
-        }
-        for (int i = 0; i < laivat.size();) {
-            int rivi = rand.nextInt(5) + 1;
-            int sarake = rand.nextInt(5) + 1;
-            if (lisaaLaivaLaudallePelaaja2(true, laivat.get(i).getKoko(), rivi, sarake) == true){
-                i++;
-            } 
+            }
         }
     }
+    public void arvoLaivatLaudallePelaaja2() {
+    for (int i = 0; i < laivat.size();) {
+            int rivi = rand.nextInt(6) + 1;
+            int sarake = rand.nextInt(6) + 1;
+            if (lisaaLaivaLaudallePelaaja2(arvoLaivalleSuunta(), laivat.get(i).getKoko(), rivi, sarake) == true){
+                i++;
+            } 
+        }    
+    }
+        
+    
+    
+    public boolean arvoLaivalleSuunta() {
+        int suunta = rand.nextInt(2) +1;
+        if (suunta == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

@@ -49,6 +49,17 @@ public class LogiikkaTest {
         assertEquals(koko, 12);
     }
     
+    @Test
+    public void lisaaPelaajatToimii() {
+        logic.lisaaPelaajat("Matti", "Teppo");
+        assertEquals(logic.getPelaaja1().getNimi(), "Matti");
+    }
+
+    @Test
+    public void lisaaPelaajatToimii2() {
+        logic.lisaaPelaajat("Matti", "Teppo");
+        assertEquals(logic.getPelaaja2().getNimi(), "Teppo");
+    }
     //@Test
    // public void miinanLisaysPelaaja1Toimii1() {
    //     assertEquals(logic.pelaaja1LisaaMiina(1, 1), true);
@@ -69,10 +80,7 @@ public class LogiikkaTest {
     //    assertEquals(logic.pelaaja2LisaaMiina(7, 2), false);
     //}
     
-    @Test
-    public void lisaaLaivaPelaaja1Toimii() {
-        assertEquals(logic.lisaaLaivaLaudallePelaaja1(true, 2, 1, 1), false);
-    }
+   
     
     @Test
     public void lisaaLaivaPelaaja1Toimii2() {
@@ -80,10 +88,7 @@ public class LogiikkaTest {
         assertEquals(logic.lisaaLaivaLaudallePelaaja1(true, 2, 1, 1), false);
     }
     
-    @Test
-    public void lisaaLaivaPelaaja2Toimii() {
-        assertEquals(logic.lisaaLaivaLaudallePelaaja2(true, 2, 1, 1), true);
-    }
+   
     
     @Test
     public void lisaaLaivaPelaaja2Toimii2() {
@@ -92,17 +97,56 @@ public class LogiikkaTest {
     }
     
     @Test
+    public void vuoroAluksi2() {
+        assertEquals(logic.getVuoro(),2);
+    }
+    
+    @Test
+    public void vaihdaVuoroaToimii() {
+        logic.vaihdaVuoroa();
+        logic.vaihdaVuoroa();
+        assertEquals(logic.getVuoro(), 2);
+    }
+    
+    @Test
+    public void vaihdaVuoroaToimii2() {
+        logic.vaihdaVuoroa();
+        assertEquals(logic.getVuoro(), 1);
+    }
+    
+    @Test
+    public void ammuPelaaja1Toimii1() {
+        logic.lisaaLaivaLaudallePelaaja2(true, 3, 2, 1);
+        assertEquals(logic.ammuPelaaja1(1, 0), 2);
+    }
+    
+    @Test
     public void ammuPelaaja1Toimii() {
-        logic.lisaaLaivaLaudallePelaaja2(true, 3, 1, 1);
-        assertEquals(logic.ammuPelaaja1(1, 1), true);
+        assertEquals(logic.ammuPelaaja1(7, 7), 2);
+    }
+    
+      @Test
+    public void ammuPelaaja2Toimii1() {
+        logic.lisaaLaivaLaudallePelaaja1(true, 2, 1, 0);
+        assertEquals(logic.ammuPelaaja1(2, 0), 2);
     }
     
     @Test
     public void ammuPelaaja2Toimii() {
-        logic.lisaaLaivaLaudallePelaaja1(true, 4, 2, 2);
-        assertEquals(logic.ammuPelaaja2(1, 1), true);
+        assertEquals(logic.ammuPelaaja2(7, 7), 2);
     }
     
+    @Test
+    public void pelaaja1PisteetToimii() {
+        assertEquals(logic.getPelaaja1Pisteet(), 0);
+    }
+    
+    @Test
+    public void pelaaja2PisteetToimii() {
+        assertEquals(logic.getPelaaja2Pisteet(), 0);
+    }
+    
+   
   //  public void miinatToimii1() {
    //     logic.pelaaja1LisaaMiina(1, 1);
      //   logic.lisaaLaivaLaudallePelaaja2(true, 3, 1, 1);
