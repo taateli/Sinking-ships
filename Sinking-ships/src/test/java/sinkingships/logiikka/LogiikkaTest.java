@@ -113,6 +113,8 @@ public class LogiikkaTest {
         logic.vaihdaVuoroa();
         assertEquals(logic.getVuoro(), 1);
     }
+   
+    
     
     @Test
     public void ammuPelaaja1Toimii1() {
@@ -120,10 +122,7 @@ public class LogiikkaTest {
         assertEquals(logic.ammuPelaaja1(1, 0), 2);
     }
     
-    @Test
-    public void ammuPelaaja1Toimii() {
-        assertEquals(logic.ammuPelaaja1(7, 7), 2);
-    }
+
     
       @Test
     public void ammuPelaaja2Toimii1() {
@@ -147,27 +146,6 @@ public class LogiikkaTest {
     }
     
    
-  //  public void miinatToimii1() {
-   //     logic.pelaaja1LisaaMiina(1, 1);
-     //   logic.lisaaLaivaLaudallePelaaja2(true, 3, 1, 1);
-       // assertEquals(logic.getPelaaja1Pisteet(), 1);
-    //}
-    
-   // @Test
-   // public void miinatToimii2() {
-   //     logic.pelaaja2LisaaMiina(1, 1);
-   //     logic.pelaaja2LisaaMiina(1, 2);
-   //     logic.lisaaLaivaLaudallePelaaja1(true, 3, 1, 1);
-   //     assertEquals(logic.getPelaaja2Pisteet(), 2);
-   // }
-    
-   // @Test
-   // public void miinatToimii3() {
-   //     logic.pelaaja1LisaaMiina(2, 4);
-   //     logic.pelaaja1LisaaMiina(3, 4);
-   //     logic.lisaaLaivaLaudallePelaaja2(false, 3, 2, 4);
-   //     assertEquals(logic.getPelaaja1Pisteet(), 2);
-   // }
     
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

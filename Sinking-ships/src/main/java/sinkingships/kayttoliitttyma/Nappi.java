@@ -17,8 +17,7 @@ import javax.swing.WindowConstants;
 import sinkingships.logiikka.Logiikka;
 
 /**
- *
- * @author tatuhelander
+ * Laudan rakentavat napit. Jotka toteuttavat ampumisen.
  */
 public class Nappi extends JButton implements ActionListener {
 

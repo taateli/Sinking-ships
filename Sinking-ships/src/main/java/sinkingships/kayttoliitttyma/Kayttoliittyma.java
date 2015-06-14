@@ -17,8 +17,8 @@ import javax.swing.WindowConstants;
 import sinkingships.logiikka.Logiikka;
 
 /**
- *
- * @author tatuhelander
+ *Pelin pääikkuna, johon piirtyy ja päivittyy kuva pelilaudoista.
+ *Pelaajat ampuvat vuorollan 
  */
 public class Kayttoliittyma extends javax.swing.JFrame implements Runnable {
 

@@ -12,9 +12,9 @@ import javax.swing.JTextField;
 import sinkingships.logiikka.Logiikka;
 
 /**
- *
- * @author tatuhelander
+ * Aloitus ikkunan toiminnallisuus joka lisää peliin pelaajat
  */
+
 public class NimenKuuntelija implements ActionListener {
 
     private Kayttoliittyma kayttoliittyma;

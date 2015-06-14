@@ -13,8 +13,7 @@ import javax.swing.JTextField;
 import sinkingships.logiikka.Logiikka;
 
 /**
- *
- * @author tatuhelander
+ * Pelin aloitus ruutu
  */
 public class Aloitus extends JPanel {
 

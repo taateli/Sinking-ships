@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
- * @author tatuhelander
+ * Koordinoi peliä ja toteuttaa käyttöliittymälle näkyvän rajapinnan
+ * ja tarjoaa sille kaiken tarvitseman.
  */
 public class Logiikka {
 
@@ -28,14 +28,6 @@ public class Logiikka {
         vuoro = 2;
     }
     
-    //public Logiika() {
-    //    pelaaja1Lauta = new Lauta();
-    //    pelaaja2Lauta = new Lauta();
-    //    asetaLaivat();
-    //    arvoLaivatLaudalle();
-    //}
-
-    
     /*
     *Asettaa peliin oikean kokoiset laivat
     */
@@ -46,6 +38,10 @@ public class Logiikka {
         laivat.add(new Laiva(4));
     }
     
+    /**
+     * Vaihtaa pelaajan vuoroa
+     */
+
     public void vaihdaVuoroa() {
         if (vuoro == 1) {
             vuoro = 2;
@@ -54,14 +50,12 @@ public class Logiikka {
         }
         
     }
-    
+
+
     public int getVuoro() {
         return vuoro;
     }
 
-    /*
-    *Palauttaa pelaaja1 laudan
-    */
     public int[][] getLauta1() {
         return pelaaja1Lauta.getLauta();
     }
@@ -82,23 +76,17 @@ public class Logiikka {
         return pelaaja2Pisteet;
     }
 
-    //public boolean pelaaja1LisaaMiina(int rivi, int sarake) {
-    //    rivi = (rivi - 1);
-    //    sarake = (sarake - 1);
-    //    return pelaaja2Lauta.lisaaSyvyysPommi(rivi, sarake);
-    //}
-
-   // public boolean pelaaja2LisaaMiina(int rivi, int sarake) {
-   //     rivi = (rivi - 1);
-   //     sarake = (sarake - 1);
-   //     return pelaaja1Lauta.lisaaSyvyysPommi(rivi, sarake);
-   // }
-
-    /*
-    *Lisää laivan pelaaja1 laudalle
+    /**
+    *Lisää laivan pelaajan 1 laudalle
     *
-    *@param   syote   
+    * @param suunta - asetettavan laivan suunta. true jos vaaka, false jos pysty
+    * @param koko - laivan koko ruutujen lukumääränä
+    * @param rivi - pysty suunnassa olevan akselin rivi numero jolta laivaa aletaan sijoittamaan ruudukkoon
+    * @param sarake - vaaka suunnassa olevan akselin numero jolta laivaa aletaan sijoittamaan ruudukkoon
+    * 
+    * @return voitiinko laiva asettaa true -> jos onnistui false -> jos ei
     */
+    
     public boolean lisaaLaivaLaudallePelaaja1(boolean suunta, int koko, int rivi, int sarake) {
 
            if (suunta == true) {
@@ -110,6 +98,17 @@ public class Logiikka {
     }
     }
 
+  /**
+    *Lisää laivan pelaajan 2 laudalle
+    *
+    * @param suunta - asetettavan laivan suunta. true jos vaaka, false jos pysty
+    * @param koko - laivan koko ruutujen lukumääränä
+    * @param rivi - pysty suunnassa olevan akselin rivi numero jolta laivaa aletaan sijoittamaan ruudukkoon
+    * @param sarake - vaaka suunnassa olevan akselin numero jolta laivaa aletaan sijoittamaan ruudukkoon
+    * 
+    * @return voitiinko laiva asettaa true -> jos onnistui false -> jos ei
+    */
+    
     public boolean lisaaLaivaLaudallePelaaja2(boolean suunta, int koko, int rivi, int sarake) {
 
         if (suunta == true) {
@@ -120,7 +119,13 @@ public class Logiikka {
             
     }
     }
-
+    
+    /**
+    *Luo pelaajat ja lisää ne peliin.
+    *
+    * @param nimi1 - asetettavan laivan suunta. true jos vaaka, false jos pysty
+    */
+    
     public void lisaaPelaajat(String nimi1, String nimi2) {
         pelaaja1 = new Pelaaja(nimi1, pelaaja1Lauta);
         pelaaja2 = new Pelaaja(nimi2, pelaaja2Lauta);
@@ -134,6 +139,16 @@ public class Logiikka {
         return pelaaja2;
     }
 
+   /**
+    *Pelaaja 1 ampuu pelaajan 2 laudalle.
+    *
+    * @param rivi - pystyakselin piste jolle pelaaja 1 haluaa ampua
+    * @param sarake - vaaka-akselin piste jolle pelaaja 1 haluaa ampua
+    * 
+    * @return palauttaa 3, jos pelaaja 1 osuu pelaaja2 laivaan ja kaikki laivat on upotettu, 1 jos pelaaja osuu vastustajan laivaan ja
+    * 2 jos pelaaja ei osu laivaan.
+    */
+    
     public int ammuPelaaja1(int rivi, int sarake) {
         if (pelaaja2Lauta.osuukoLaivaan((rivi), (sarake)) == true) {
             pelaaja1Pisteet++;
@@ -147,6 +162,16 @@ public class Logiikka {
 
     }
 
+  /**
+    *Pelaaja 2 ampuu pelaajan 1 laudalle.
+    *
+    * @param rivi - pystyakselin piste jolle pelaaja 1 haluaa ampua
+    * @param sarake - vaaka-akselin piste jolle pelaaja 1 haluaa ampua
+    * 
+    * @return palauttaa 3, jos pelaaja2 osuu pelaaja1 laivaan ja kaikki laivat on upotettu, 1 jos pelaaja osuu vastustajan laivaan ja
+    * 2 jos pelaaja ei osu laivaan.
+    */
+    
     public int ammuPelaaja2(int rivi, int sarake) {
         if (pelaaja1Lauta.osuukoLaivaan((rivi), (sarake)) == true) {
             pelaaja2Pisteet++;
@@ -160,6 +185,10 @@ public class Logiikka {
 
     }
     
+  /**
+    *Arpoo pelaajan1 laudalle laivat.
+    */
+    
     public void arvoLaivatLaudallePelaaja1() {
         for (int i = 0; i < laivat.size();) {
             int rivi = rand.nextInt(6) +1;
@@ -169,6 +198,11 @@ public class Logiikka {
             }
         }
     }
+    
+  /**
+    *Arpoo pelaajan2 laudalle laivat.
+    */
+      
     public void arvoLaivatLaudallePelaaja2() {
     for (int i = 0; i < laivat.size();) {
             int rivi = rand.nextInt(6) + 1;
@@ -179,7 +213,12 @@ public class Logiikka {
         }    
     }
         
-    
+  /**
+    *Arvottavien laivojen suunnan arpoja, eli tulee laiva pysty vai vaakasuuntaan
+    * 
+    * @return palauttaa true -> jos vaaka ja false -> jos pysty
+    */
+      
     
     public boolean arvoLaivalleSuunta() {
         int suunta = rand.nextInt(2) +1;

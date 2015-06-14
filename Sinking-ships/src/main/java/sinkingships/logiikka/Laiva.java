@@ -1,6 +1,9 @@
 
 package sinkingships.logiikka;
 
+/**
+ * Koordinoi laivojen kokoa.
+ */
 
 public class Laiva {
     int koko;

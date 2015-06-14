@@ -8,4 +8,5 @@
 28.5.2015 Koodia pajassa 2h
 1-7.6.2015 Koodia pajassa ja kotona 4h
 9.6.2015 Koodia pajassa ja kaavioiden piirtämistä 3h
-11.6. Koodian parantelua 4h
+11.6.2015 Koodian parantelua 4h
+14.6.2015 Parantelua ja viimeistelyä. 6h.

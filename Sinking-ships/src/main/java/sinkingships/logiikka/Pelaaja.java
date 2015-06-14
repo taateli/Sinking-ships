@@ -8,8 +8,7 @@ package sinkingships.logiikka;
 import java.util.ArrayList;
 
 /**
- *
- * @author tatuhelander
+ * Koordinoi pelaajan nimeä ja lautaa.
  */
 public class Pelaaja {
     private final String nimi;

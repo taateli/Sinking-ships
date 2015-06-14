@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sinkingships.kayttoliitttyma;
+package sinkingships.main;
 
 import javax.swing.SwingUtilities;
+import sinkingships.kayttoliitttyma.Kayttoliittyma;
 
 /**
  *
