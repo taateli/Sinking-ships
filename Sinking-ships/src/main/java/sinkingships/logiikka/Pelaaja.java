@@ -11,24 +11,21 @@ import java.util.ArrayList;
  * Koordinoi pelaajan nimeä ja lautaa.
  */
 public class Pelaaja {
+
     private final String nimi;
     private final Lauta lauta;
 
-    
     public Pelaaja(String nimi, Lauta lauta) {
         this.nimi = nimi;
         this.lauta = lauta;
     }
-    
-   
+
     public int[][] getLauta() {
         return lauta.getLauta();
     }
-    
-  
-    
+
     public String getNimi() {
         return nimi;
     }
-    
+
 }

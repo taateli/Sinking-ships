@@ -5,7 +5,6 @@ package sinkingships.logiikka;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +17,7 @@ import sinkingships.logiikka.Pelaaja;
  * @author tatuhelander
  */
 public class PelaajaTest {
+
     private Pelaaja pelaaja;
     Lauta lauta = new Lauta();
     int[][] testi;
@@ -27,18 +27,17 @@ public class PelaajaTest {
         pelaaja = new Pelaaja("Pertti", lauta);
         testi = pelaaja.getLauta();
     }
-    
+
     @Test
     public void pelaajaPalauttaaNimen() {
         assertEquals(pelaaja.getNimi(), "Pertti");
     }
-    
-    
+
     @Test
     public void laudanPalautusToiii() {
         assertEquals(pelaaja.getLauta(), testi);
     }
-    
+
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //

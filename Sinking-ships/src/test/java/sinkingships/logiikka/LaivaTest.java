@@ -17,19 +17,17 @@ import static org.junit.Assert.*;
  * @author tatuhelander
  */
 public class LaivaTest {
-    
+
     private Laiva laiva;
-    
+
     public LaivaTest() {
     }
-    
- 
-  
+
     @Before
     public void setUp() {
-    laiva = new Laiva(4);    
+        laiva = new Laiva(4);
     }
-    
+
     @Test
     public void getKokoToimii() {
         assertEquals(laiva.getKoko(), 4);

@@ -14,7 +14,6 @@ import sinkingships.logiikka.Logiikka;
 /**
  * Aloitus ikkunan toiminnallisuus joka lisää peliin pelaajat
  */
-
 public class NimenKuuntelija implements ActionListener {
 
     private Kayttoliittyma kayttoliittyma;

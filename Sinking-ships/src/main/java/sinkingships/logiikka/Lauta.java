@@ -8,7 +8,6 @@ package sinkingships.logiikka;
 /**
  * Pelissä käytettävä pelialusta
  */
-
 public class Lauta {
 
     private final int[][] lauta;
@@ -32,16 +31,16 @@ public class Lauta {
         return lauta[rivi][sarake];
     }
 
- /**
-  * Asettaa laivan laudalle vaakatasoon
-  * 
-  * @param koko - laivan koko pisteinä
-  * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
-  * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
-  * 
-  * @return palauttaa joko true, jos laivan asetus onnistui tai false jos se ei onnistunut
- */
-    
+    /**
+     * Asettaa laivan laudalle vaakatasoon
+     *
+     * @param koko - laivan koko pisteinä
+     * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
+     * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
+     *
+     * @return palauttaa joko true, jos laivan asetus onnistui tai false jos se
+     * ei onnistunut
+     */
     public boolean asetaLaivaVaaka(int koko, int rivi, int sarake) {
         int onkoLaudallaVaaka = koko + sarake;
         if (onkoPisteLaudalla(rivi, onkoLaudallaVaaka) == false || onkoPisteLaudalla(rivi, sarake) == false) {
@@ -61,16 +60,16 @@ public class Lauta {
 
     }
 
- /**
-  * Asettaa laivan laudalle pystysuunnassa
-  * 
-  * @param koko - laivan koko pisteinä
-  * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
-  * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
-  * 
-  * @return palauttaa joko true, jos laivan asetus onnistui tai false jos se ei onnistunut    
-  */
-    
+    /**
+     * Asettaa laivan laudalle pystysuunnassa
+     *
+     * @param koko - laivan koko pisteinä
+     * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
+     * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
+     *
+     * @return palauttaa joko true, jos laivan asetus onnistui tai false jos se
+     * ei onnistunut
+     */
     public boolean asetaLaivaPysty(int koko, int rivi, int sarake) {
         int onkoLaudallaPysty = koko + rivi;
         if (onkoPisteLaudalla(onkoLaudallaPysty, sarake) == false || onkoPisteLaudalla(rivi, sarake) == false) {
@@ -93,43 +92,41 @@ public class Lauta {
         }
     }
 
- /**
-  * Tarkistaa mahtuuko laiva pystysuunnassa ajateltuun kohtaan
-  * 
-  * @param koko - laivan koko pisteinä
-  * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
-  * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
-  * 
-  * @return palauttaa joko true, jos laivan kokoinen tila pystysuunnassa aloitus pisteestä on vapaa
-  * tai false jos se ei ole    
-  */
-    
+    /**
+     * Tarkistaa mahtuuko laiva pystysuunnassa ajateltuun kohtaan
+     *
+     * @param koko - laivan koko pisteinä
+     * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
+     * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
+     *
+     * @return palauttaa joko true, jos laivan kokoinen tila pystysuunnassa
+     * aloitus pisteestä on vapaa tai false jos se ei ole
+     */
     public boolean onkoTilaVapaaPysty(int koko, int rivi, int sarake) {
         int onkoLaudallaPysty = koko + rivi;
         if (onkoPisteLaudalla(onkoLaudallaPysty, sarake) == false || onkoPisteLaudalla(rivi, sarake) == false) {
             return false;
         }
-            for (int i = 0; i < koko; i++) {
-                if (lauta[rivi][sarake] == 1) {
-                    return false;
-                } else {
-                    rivi++;
-                }
+        for (int i = 0; i < koko; i++) {
+            if (lauta[rivi][sarake] == 1) {
+                return false;
+            } else {
+                rivi++;
             }
-            return true;
-        } 
-    
- /**
-  * Tarkistaa mahtuuko laiva pystysuunnassa ajateltuun kohtaan
-  * 
-  * @param koko - laivan koko pisteinä
-  * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
-  * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
-  * 
-  * @return palauttaa joko true, jos laivan kokoinen tila pystysuunnassa aloitus pisteestä on vapaa
-  * tai false jos se ei ole    
-  */
+        }
+        return true;
+    }
 
+    /**
+     * Tarkistaa mahtuuko laiva pystysuunnassa ajateltuun kohtaan
+     *
+     * @param koko - laivan koko pisteinä
+     * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
+     * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
+     *
+     * @return palauttaa joko true, jos laivan kokoinen tila pystysuunnassa
+     * aloitus pisteestä on vapaa tai false jos se ei ole
+     */
     public boolean onkoTilaVapaaVaaka(int koko, int rivi, int sarake) {
         int onkoLaudallaVaaka = koko + sarake;
         if (onkoPisteLaudalla(rivi, onkoLaudallaVaaka) == true || onkoPisteLaudalla(rivi, sarake) == true) {
@@ -147,15 +144,14 @@ public class Lauta {
         }
     }
 
-/**
-  * Tarkistaa onko pisteessä laivaa
-  * 
-  * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
-  * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
-  * 
-  * @return palauttaa joko true, jos pisteessä on laiva tai false jos ei ole    
-  */
-    
+    /**
+     * Tarkistaa onko pisteessä laivaa
+     *
+     * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
+     * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
+     *
+     * @return palauttaa joko true, jos pisteessä on laiva tai false jos ei ole
+     */
     public boolean osuukoLaivaan(int rivi, int sarake) {
 
         if (onkoPisteLaudalla(rivi, sarake) == true) {
@@ -170,22 +166,21 @@ public class Lauta {
         return false;
     }
 
-/**
-  * Tarkistaa onko piste laudalla
-  * 
-  * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
-  * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
-  * 
-  * @return palauttaa joko true, jos pisteessä on laudalla tai false jos ei ole    
-  */    
-    
+    /**
+     * Tarkistaa onko piste laudalla
+     *
+     * @param rivi - pystysuunnan rivinumero jolta laiva alkaa
+     * @param sarake - vaakasuunnan rivinumero jolta laiva alkaa
+     *
+     * @return palauttaa joko true, jos pisteessä on laudalla tai false jos ei
+     * ole
+     */
     public boolean onkoPisteLaudalla(int rivi, int sarake) {
-       if (rivi < 8 && sarake < 8) {
-           return true;
-       } else {
-           return false;
-       }
+        if (rivi < 8 && sarake < 8) {
+            return true;
+        } else {
+            return false;
+        }
     }
-
 
 }
