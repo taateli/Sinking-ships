@@ -15,6 +15,12 @@ Pelaajan toiminnot:
 - Pelaa peliä toista pelaajaa vastaan. Laivojen asettamisen jälkeen pelaajat vuorotellen pommittavat vastustajan ruutuja. Voittaja on pelaaja jolla ensimmäisenä kaikki vastustajan laivat tuhottu.
 
 
+Jos aikaa jää, lisätoiminnallisuudet:
+
+- Mahdollisuus itse lisätä laivat.
+- Miinat jotka molemmat pelaajat lisäävät ennen laivoja.
+- Tietokonevastustaja
+
 
 Rakenteen kuvaus:
 
