@@ -50,12 +50,14 @@ public class Nappi extends JButton implements ActionListener {
                     setBackground(Color.blue);
                     setEnabled(false);
                     logic.vaihdaVuoroa();
+                    k.paivitaVuoro();
                 }
                 if (tulos == 1) {
                     setText("x");
                     setBackground(Color.red);
                     setEnabled(false);
                     logic.vaihdaVuoroa();
+                    k.paivitaVuoro();
                 }
             }
 
@@ -77,7 +79,7 @@ public class Nappi extends JButton implements ActionListener {
                     voittaja = logic.getPelaaja1().getNimi();
                 }
 
-                JLabel onnittelu = new JLabel(voittaja + " Voitit pelin!");
+                JLabel onnittelu = new JLabel("Onnea!! " + voittaja + " voitit pelin!");
 
                 lopetus.add(onnittelu);
 

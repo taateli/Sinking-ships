@@ -60,9 +60,14 @@ public class Kayttoliittyma extends javax.swing.JFrame implements Runnable {
     }
 
     public void paivitaVuoro() {
-        vuoro.setText("Pelaaja " + laivanupotus.getVuoro() + " vuoro");
-        this.revalidate();
-        this.repaint();
+        String nimi;
+        if (laivanupotus.getVuoro()==2) {
+            nimi = laivanupotus.getPelaaja1().getNimi();
+        } else {
+            nimi = laivanupotus.getPelaaja2().getNimi();
+        }
+        
+        vuoro.setText(nimi  + "n vuoro ampua");
     }
 
     public JPanel luoNapit(int pelaaja) {
@@ -90,7 +95,7 @@ public class Kayttoliittyma extends javax.swing.JFrame implements Runnable {
 
     void AloitaPeli() {
         frame = new JFrame("Sinkingships");
-        frame.setPreferredSize(new Dimension(800, 600));
+        frame.setPreferredSize(new Dimension(800, 725));
         frame.setLayout(new GridLayout(5, 1));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
