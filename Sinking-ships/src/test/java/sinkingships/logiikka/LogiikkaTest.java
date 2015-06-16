@@ -24,7 +24,7 @@ public class LogiikkaTest {
     private Logiikka logic;
     private int[][] lauta1;
     private int[][] lauta2;
-
+    
     public LogiikkaTest() {
     }
 
@@ -59,23 +59,33 @@ public class LogiikkaTest {
         logic.lisaaPelaajat("Matti", "Teppo");
         assertEquals(logic.getPelaaja2().getNimi(), "Teppo");
     }
-    //@Test
-    // public void miinanLisaysPelaaja1Toimii1() {
-    //     assertEquals(logic.pelaaja1LisaaMiina(1, 1), true);
-    // }
 
-    //@Test
-    // public void miinanLisaysPelaaja1Toimii2() {
-    //     assertEquals(logic.pelaaja1LisaaMiina(7, 2), false);
-    // }
-    //@Test
-    //public void miinanLisaysPelaaja2Toimii1() {
-    //    assertEquals(logic.pelaaja2LisaaMiina(1, 1), true);
-    //}
-    //@Test
-    //public void miinanLisaysPelaaja2Toimii2() {
-    //    assertEquals(logic.pelaaja2LisaaMiina(7, 2), false);
-    //}
+    @Test
+    public void laivojenArpominenToimiiPelaaja1() {
+        int pisteet = 0;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++){
+                if (logic.ammuPelaaja1(i,j) == 1 || logic.ammuPelaaja1(i,j) == 3){
+                    pisteet++;
+                }
+            }
+        }
+        assertEquals(pisteet, 11);
+    }
+    
+    @Test
+    public void laivojenArpominenToimiiPelaaja2() {
+        int pisteet = 0;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++){
+                if (logic.ammuPelaaja2(i,j) == 1 || logic.ammuPelaaja2(i,j) == 3){
+                    pisteet++;
+                }
+            }
+        }
+        assertEquals(pisteet, 11);
+    }    
+    
     @Test
     public void lisaaLaivaPelaaja1Toimii2() {
         logic.lisaaLaivaLaudallePelaaja1(true, 2, 1, 1);
