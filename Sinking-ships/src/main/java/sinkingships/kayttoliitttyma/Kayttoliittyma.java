@@ -95,7 +95,7 @@ public class Kayttoliittyma extends javax.swing.JFrame implements Runnable {
 
     void AloitaPeli() {
         frame = new JFrame("Sinkingships");
-        frame.setPreferredSize(new Dimension(800, 725));
+        frame.setPreferredSize(new Dimension(700, 650));
         frame.setLayout(new GridLayout(5, 1));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

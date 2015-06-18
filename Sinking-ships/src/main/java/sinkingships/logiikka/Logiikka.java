@@ -153,7 +153,7 @@ public class Logiikka {
     public int ammuPelaaja1(int rivi, int sarake) {
         if (pelaaja2Lauta.osuukoLaivaan((rivi), (sarake)) == true) {
             pelaaja1Pisteet++;
-            if (pelaaja1Pisteet == 12) {
+            if (pelaaja1Pisteet == 11) {
                 return 3; // jos osuma laivan ja pelaajalla 12 pistettä palautta 3, eli pelaaja voitaa pelin
             }
             return 1; // jos osuma laivaan palauttaa 1
@@ -176,7 +176,7 @@ public class Logiikka {
     public int ammuPelaaja2(int rivi, int sarake) {
         if (pelaaja1Lauta.osuukoLaivaan((rivi), (sarake)) == true) {
             pelaaja2Pisteet++;
-            if (pelaaja2Pisteet == 12) {
+            if (pelaaja2Pisteet == 11) {
                 return 3; // jos osuma laivan ja pelaajalla 12 pistettä palautta 3, eli pelaaja voitaa pelin
             }
             return 1; // jos osuma laivaan palauttaa 1
